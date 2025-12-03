@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout - Clothcallz</title>
+</head>
+<body>
+    <h1>Checkout</h1>
+
+    <h2>Your Cart</h2>
+    <ul>
+        {% for item in cart_items %}
+        <li>{{ item.product.name }} (x{{ item.quantity }}) - ₹{{ item.product.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Total: ₹{{ total_amount }}</h3>
+
+    <h2>Choose Payment Method</h2>
+
+    <!-- COD -->
+    <form method="POST" action="{% url 'cod_payment' %}">
+        {% csrf_token %}
+        <button type="submit">Cash on Delivery</button>
+    </form>
+
+    <br>
+
+    <!-- Razorpay/UPI -->
+    <form>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="{{ razorpay_key }}"
+                data-amount="{{ payment.amount }}"
+                data-currency="INR"
+                data-order_id="{{ payment.id }}"
+                data-buttontext="Pay with UPI / Card"
+                data-name="Clothcallz"
+                data-description="Order Payment"
+                data-theme.color="#3399cc">
+        </script>
+    </form>
+</body>
+</html>

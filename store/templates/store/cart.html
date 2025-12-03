@@ -1,0 +1,12 @@
+<h2>Your Cart</h2>
+{% for item in cart_items %}
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <img src="{{ item.product.image.url }}" width="100"><br>
+        <strong>{{ item.product.name }}</strong><br>
+        ₹{{ item.product.price }} × {{ item.quantity }}<br>
+        Total: ₹{{ item.product.price|floatformat:2|add:item.quantity|floatformat:2 }}
+    </div>
+{% empty %}
+    <p>Your cart is empty.</p>
+{% endfor %}
+<a href="{% url 'home' %}">← Continue Shopping</a>

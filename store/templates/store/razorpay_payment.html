@@ -1,0 +1,17 @@
+<h2>Razorpay Payment</h2>
+<p>Order ID: {{ order.id }}</p>
+<p>Amount: ₹{{ order.total_price }}</p>
+
+<form id="razorpay-form">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"
+          data-key="{{ razorpay_key_id }}"
+          data-amount="{{ order.total_price|floatformat:2|floatformat:"0" }}00"
+          data-currency="INR"
+          data-order_id="{{ razorpay_order_id }}"
+          data-buttontext="Pay with Razorpay"
+          data-name="Clothcallz"
+          data-description="Purchase"
+          data-theme.color="#F37254">
+  </script>
+  <input type="hidden" custom="Hidden Element" name="hidden">
+</form>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Successful</title>
+</head>
+<body>
+    <h2>Thank you for your purchase!</h2>
+
+    <p>Order ID: {{ order.id }}</p>
+    <p>Total Paid: ₹{{ order.total_price }}</p>
+    <p>Payment Method: {{ order.payment_method }}</p>
+
+    {% if order.cart_items.exists %}
+        <p>Products Ordered:</p>
+        <ul>
+            {% for item in order.cart_items.all %}
+                <li>{{ item.product.name }} × {{ item.quantity }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Product Ordered: {{ order.product.name }}</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}">← Back to Home</a>
+</body>
+</html>
