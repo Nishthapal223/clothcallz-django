@@ -8,10 +8,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-change-this-to-a-strong-key'
 
 # ✅ Debug mode ON for development (Turn OFF in production)
-DEBUG = True
+  DEBUG = False
+
 
 # 🌍 Allowed hosts (use '*' in development if needed)
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['clothcallz-django.onrender.com', 'localhost', '127.0.0.1']
+
 
 # 📦 Installed Django & third-party apps
 INSTALLED_APPS = [
@@ -89,10 +91,8 @@ USE_TZ = True
 
 # 📂 Static files (CSS, JS, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # ✅ Your static folder
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # 📂 Media files (User uploads)
 MEDIA_URL = '/media/'
