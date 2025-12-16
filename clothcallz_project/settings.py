@@ -7,13 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ⚠️ Always keep your secret key safe
 SECRET_KEY = 'django-insecure-change-this-to-a-strong-key'
 
-# ✅ Debug mode ON for development (Turn OFF in production)
-  DEBUG = False
+DEBUG = os.environ.get("DEBUG") == "True"
 
-
-# 🌍 Allowed hosts (use '*' in development if needed)
-ALLOWED_HOSTS = ['clothcallz-django.onrender.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 # 📦 Installed Django & third-party apps
 INSTALLED_APPS = [
